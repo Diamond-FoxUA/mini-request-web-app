@@ -6,7 +6,7 @@ import { type AppState } from "./types";
 export const useAppStore = create<AppState>()(
   persist(
     (set) => ({
-      role: null,
+      role: "user",
       requests: [],
 
       setRole: (role) => set({ role }),

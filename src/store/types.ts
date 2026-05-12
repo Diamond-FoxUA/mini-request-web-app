@@ -1,6 +1,6 @@
 export type RequestStatus = "new" | "in progress" | "done";
 
-type UserRole = "user" | "manager" | null;
+type UserRole = "user" | "manager";
 
 export interface RequestItem {
   id: string;

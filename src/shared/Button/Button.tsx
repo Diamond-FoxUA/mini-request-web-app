@@ -5,7 +5,7 @@ type ButtonProps = {
 } & ComponentProps<"button">;
 
 export default function Button({
-  variant = "secondary",
+  variant = "primary",
   ...props
 }: ButtonProps) {
   return (
