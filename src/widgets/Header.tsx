@@ -1,4 +1,4 @@
-import Button from "../shared/Button/Button";
+import Button from "../components/shared/Button/Button";
 import { useAppStore } from "../store/useAppStore";
 
 type HeaderProps = {
@@ -14,8 +14,12 @@ export default function Header({ onOpenModal }: HeaderProps) {
         Mini Request System
       </div>
       <div className="flex items-center gap-6">
-        <span className="font-normal ">Current role: <span className="font-semibold">{currentRole}</span></span>
-        <Button onClick={onOpenModal}>Switch Role</Button>
+        <span className="font-normal ">
+          Current role: <span className="font-semibold">{currentRole}</span>
+        </span>
+        <Button variant="secondary" onClick={onOpenModal}>
+          Switch Role
+        </Button>
       </div>
     </header>
   );
