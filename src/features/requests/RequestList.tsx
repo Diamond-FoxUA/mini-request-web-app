@@ -12,7 +12,7 @@ export default function RequestList({
   onEditRequest,
   filteredRequests,
 }: RequestListProps) {
-  const { role, updateStatus } = useAppStore();
+  const { role, updateStatus, deleteRequest } = useAppStore();
   const DESC_LIMIT = 115;
 
   const handleUpdateStatus = (id: string) => {
@@ -39,9 +39,23 @@ export default function RequestList({
             className="flex flex-col gap-3 text-slate-700 bg-slate-200 p-4 min-h-60 w-60 rounded-2xl"
           >
             <div className="flex flex-col gap-1">
-              <h3 className="text-center text-lg font-semibold text-slate-700">
-                {request.title}
-              </h3>
+              <button
+                className="text-red-800 ml-auto mr-0 cursor-pointer hover:text-red-600 transition-colors duration-300"
+                onClick={() => deleteRequest(request.id)}
+              >
+                Delete
+              </button>
+              <div>
+                <h3 className="text-center text-2xl font-semibold text-slate-700">
+                  {request.title}
+                </h3>
+                <span className="block text-center text-xs text-slate-700">
+                  {new Date(request.createdAt).toLocaleString(undefined, {
+                    dateStyle: "short",
+                    timeStyle: "short",
+                  })}
+                </span>
+              </div>
               <span className="text-slate-700">
                 Status:{" "}
                 <span
@@ -74,9 +88,25 @@ export default function RequestList({
             className="flex flex-col gap-3 text-slate-700 bg-slate-200 p-4 min-h-60 w-60 rounded-2xl"
           >
             <div className="flex flex-col gap-6 justify-between">
-              <h3 className="text-center text-2xl">{request.title}</h3>
+              <div className="flex flex-col gap-1">
+                <button
+                  className="text-red-800 ml-auto mr-0 cursor-pointer hover:text-red-600 transition-colors duration-300"
+                  onClick={() => deleteRequest(request.id)}
+                >
+                  Delete
+                </button>
+                <h3 className="text-center text-2xl font-semibold text-slate-700">
+                  {request.title}
+                </h3>
+                <span className="block text-center text-xs text-slate-700">
+                  {new Date(request.createdAt).toLocaleString(undefined, {
+                    dateStyle: "short",
+                    timeStyle: "short",
+                  })}
+                </span>
+              </div>
               <div className="flex justify-between">
-                <span>
+                <span className="text-slate-700">
                   Status:{" "}
                   <span
                     className={`${request.status === "new" && "text-blue-500"} ${request.status === "in progress" && "text-amber-500"} ${request.status === "done" && "text-green-600"}`}
