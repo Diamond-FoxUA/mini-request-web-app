@@ -36,10 +36,12 @@ export default function RequestList({
         filteredRequests.map((request) => (
           <li
             key={request.id}
-            className="flex flex-col gap-3 bg-slate-200 p-4 min-h-60 w-60 rounded-2xl"
+            className="flex flex-col gap-3 text-slate-700 bg-slate-200 p-4 min-h-60 w-60 rounded-2xl"
           >
             <div className="flex flex-col gap-1">
-              <h3 className="text-center text-lg font-semibold text-slate-700">{request.title}</h3>
+              <h3 className="text-center text-lg font-semibold text-slate-700">
+                {request.title}
+              </h3>
               <span className="text-slate-700">
                 Status:{" "}
                 <span
@@ -69,7 +71,7 @@ export default function RequestList({
         filteredRequests.map((request) => (
           <li
             key={request.id}
-            className="flex flex-col gap-3 bg-slate-200 p-4 min-h-60 w-60 rounded-2xl"
+            className="flex flex-col gap-3 text-slate-700 bg-slate-200 p-4 min-h-60 w-60 rounded-2xl"
           >
             <div className="flex flex-col gap-6 justify-between">
               <h3 className="text-center text-2xl">{request.title}</h3>
@@ -83,16 +85,19 @@ export default function RequestList({
                   </span>
                 </span>
                 <span>ID: {request.id.slice(0, 4)}</span>
+                <span></span>
               </div>
             </div>
             <p className="wrap-break-word">{request.description}</p>
 
-            <Button
-              className="mt-auto"
-              onClick={() => handleUpdateStatus(request.id)}
-            >
-              Update status
-            </Button>
+            {request.status !== "done" && (
+              <Button
+                className="mt-auto"
+                onClick={() => handleUpdateStatus(request.id)}
+              >
+                Update status
+              </Button>
+            )}
           </li>
         ))}
     </ul>
