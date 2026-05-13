@@ -1,8 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useAppStore } from "../../../store/useAppStore";
-import type { AppState } from "../../../store/types";
-import Button from "../../../components/Button";
+import { useAppStore } from "../../store/useAppStore";
+import type { AppState } from "../../store/types";
+import Button from "../../components/Button";
 
 const requestSchema = Yup.object().shape({
   title: Yup.string()

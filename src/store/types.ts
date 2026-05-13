@@ -1,4 +1,5 @@
 export type RequestStatus = "new" | "in progress" | "done";
+export type FilterType = RequestStatus | "all";
 
 type UserRole = "user" | "manager";
 

@@ -2,9 +2,9 @@ import Header from "./components/Header";
 import SelectRoleModal from "./features/roles/SelectRoleModal/SelectRoleModal";
 import { useState } from "react";
 import { useAppStore } from "./store/useAppStore";
-import RequestList from "./features/requests/RequestList/RequestList";
+import RequestList from "./features/requests/RequestList";
 import Button from "./components/Button";
-import RequestModal from "./features/requests/RequestModal/RequestModal";
+import RequestModal from "./features/requests/RequestModal";
 
 function App() {
   const { role, requests } = useAppStore();

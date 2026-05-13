@@ -1,5 +1,5 @@
-import Modal from "../../../components/Modal";
-import RequestForm from "../RequestForm/RequestForm";
+import Modal from "../../components/Modal";
+import RequestForm from "./RequestForm";
 
 type RequestModalProps = {
   onClose: () => void;

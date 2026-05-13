@@ -1,5 +1,5 @@
-import { useAppStore } from "../../../store/useAppStore";
-import Button from "../../../components/Button";
+import { useAppStore } from "../../store/useAppStore";
+import Button from "../../components/Button";
 
 type RequestListProps = {
   onEditRequest: (id: string) => void;
