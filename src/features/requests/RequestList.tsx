@@ -15,6 +15,14 @@ export default function RequestList({
   const { role, updateStatus, deleteRequest } = useAppStore();
   const DESC_LIMIT = 115;
 
+  const statusOrder = { "new": 1, "in progress": 2, "done": 3 };
+  const sortedRequests = [...filteredRequests].sort((a, b) => {
+    const statusDiff = statusOrder[a.status] - statusOrder[b.status];
+    if (statusDiff !== 0) return statusDiff;
+
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+  });
+
   const handleUpdateStatus = (id: string) => {
     const currentRequest = filteredRequests.find((req) => req.id === id);
 
@@ -33,7 +41,7 @@ export default function RequestList({
   return (
     <ul className="flex flex-wrap justify-center gap-4">
       {role === "user" &&
-        filteredRequests.map((request) => (
+        sortedRequests.map((request) => (
           <li
             key={request.id}
             className="flex flex-col gap-3 text-slate-700 bg-slate-200 p-4 min-h-60 w-60 rounded-2xl"
@@ -82,7 +90,7 @@ export default function RequestList({
           </li>
         ))}
       {role === "manager" &&
-        filteredRequests.map((request) => (
+        sortedRequests.map((request) => (
           <li
             key={request.id}
             className="flex flex-col gap-3 text-slate-700 bg-slate-200 p-4 min-h-60 w-60 rounded-2xl"
