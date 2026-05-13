@@ -1,75 +1,63 @@
-# React + TypeScript + Vite
+# Mini Request System (Technical Assignment)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simplified web application for creating, managing, and processing service requests with distinct user roles (User and Manager). The application safely stores data locally and synchronizes status updates in real-time.
 
-Currently, two official plugins are available:
+🚀 [Live Demo](https://mini-request-web-app.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **React.js** — Frontend framework
+- **Zustand** — Global state management and LocalStorage syncing
+- **Tailwind CSS** — Modern utility-first styling
+- **Formik & Yup** — Form handling and strict validation
 
-Note: This will impact Vite dev & build performances.
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### General
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Role Switcher:** Toggle between User and Manager views.
+- **Data Persistence:** Automatically saves all changes to LocalStorage.
+- **Form Validation:** Input validation for titles and descriptions.
+- **Request List:** View all personal requests in a clean interface.
+- **Delete:** Remove requests.
+- **Sorting:** Organized all submissions by creation date.=
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### User Role
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Request Creation:** Create requests with automatic IDs, creation date and "new" status.
+- **Edit:** Modify pending requests (status "new")
+
+### Manager Role
+
+- **Status Controls:** Move requests step-by-step (new ➡️ in progress ➡️ done).
+- **Filters:** Filter tasks by status (All, New, In Progress, Done).
+
+---
+
+## 💻 Getting Started
+
+1. Clone & Install
+
+```
+git clone https://github.com/Diamond-FoxUA/mini-request-web-app.git
+cd mini-request-web-app
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Run locally
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+npm run dev
+```
+
+Open the local URL displayed in your terminal.
+
+## 📝 Implementation Overview
+
+- **State:** Zustand handles application state and keeps data synced across user roles.
+- **Validation:** Formik and Yup block invalid or empty request submissions.
+- **Styling:** Tailwind CSS delivers a clean, responsive layout with zero custom CSS boilerplate.
