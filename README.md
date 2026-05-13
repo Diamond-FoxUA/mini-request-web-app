@@ -56,6 +56,8 @@ npm run dev
 
 Open the local URL displayed in your terminal.
 
+---
+
 ## 📝 Implementation Overview
 
 - **State:** Zustand handles application state and keeps data synced across user roles.
