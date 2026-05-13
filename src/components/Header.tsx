@@ -14,8 +14,8 @@ export default function Header({ onOpenModal }: HeaderProps) {
         Mini Request System
       </div>
       <div className="flex items-center gap-6">
-        <span className="font-normal ">
-          Current role: <span className="font-semibold">{currentRole}</span>
+        <span className="font-normal text-slate-700">
+          Current role: <span className="font-semibold text-slate-900">{currentRole}</span>
         </span>
         <Button variant="secondary" onClick={onOpenModal}>
           Switch Role
