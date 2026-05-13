@@ -6,11 +6,26 @@ type RequestListProps = {
 };
 
 export default function RequestList({ onEditRequest }: RequestListProps) {
-  const { role, requests } = useAppStore();
+  const { role, requests, updateStatus } = useAppStore();
   const DESC_LIMIT = 115;
 
+  const handleUpdateStatus = (id: string) => {
+    const currentRequest = requests.find((req) => req.id === id);
+
+    switch (currentRequest?.status) {
+      case "new": {
+        updateStatus(id, "in progress");
+        break;
+      }
+      case "in progress": {
+        updateStatus(id, "done");
+        break;
+      }
+    }
+  };
+
   return (
-    <ul className="flex flex-wrap gap-4">
+    <ul className="flex flex-wrap justify-center gap-4">
       {role === "user" &&
         requests.map((request) => (
           <li
@@ -34,12 +49,14 @@ export default function RequestList({ onEditRequest }: RequestListProps) {
                 : request.description}
             </p>
 
-            <Button
-              className="mt-auto"
-              onClick={() => onEditRequest(request.id)}
-            >
-              Edit Request
-            </Button>
+            {request.status === "new" && (
+              <Button
+                className="mt-auto"
+                onClick={() => onEditRequest(request.id)}
+              >
+                Edit Request
+              </Button>
+            )}
           </li>
         ))}
       {role === "manager" &&
@@ -63,6 +80,13 @@ export default function RequestList({ onEditRequest }: RequestListProps) {
               </div>
             </div>
             <p className="wrap-break-word">{request.description}</p>
+
+            <Button
+              className="mt-auto"
+              onClick={() => handleUpdateStatus(request.id)}
+            >
+              Update status
+            </Button>
           </li>
         ))}
     </ul>
