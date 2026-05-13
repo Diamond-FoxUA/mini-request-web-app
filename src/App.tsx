@@ -6,7 +6,7 @@ import RequestList from "./features/requests/RequestList";
 import Button from "./components/Button";
 import RequestModal from "./features/requests/RequestModal";
 import type { FilterType } from "./store/types";
-import RequestFilters from "./features/requests/requestFilters";
+import RequestFilters from "./features/requests/RequestFilters";
 
 function App() {
   const { role, requests } = useAppStore();
