@@ -40,7 +40,9 @@ export const useAppStore = create<AppState>()(
       editRequest: (id, title, description) =>
         set((state) => ({
           requests: state.requests.map((req) =>
-            req.id === id ? { ...req, title, description, status: "new" } : req,
+            req.id === id && req.status === "new"
+              ? { ...req, title, description }
+              : req,
           ),
         })),
     }),

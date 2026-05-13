@@ -1,4 +1,4 @@
-import Button from "../components/shared/Button/Button";
+import Button from "./Button";
 import { useAppStore } from "../store/useAppStore";
 
 type HeaderProps = {
