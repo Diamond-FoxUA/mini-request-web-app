@@ -30,7 +30,7 @@ function App() {
 
       <main className="max-w-6xl pt-24 pb-12 px-4 mx-auto flex flex-col gap-10">
         <div className="flex flex-col items-center justify-center gap-6">
-          {requests.length > 0 && (
+          {requests.length > 0 && role === "manager" && (
             <RequestFilters
               activeFilter={activeFilter}
               setActiveFilter={setActiveFilter}
